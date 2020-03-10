@@ -1,1 +1,8 @@
+venv
+pycache
 
+*.session
+*.session-journal
+data/
+config.py
+sessions/
