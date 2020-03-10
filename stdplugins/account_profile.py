@@ -68,7 +68,7 @@ async def _(event):
             except Exception as e:  # pylint:disable=C0103,W0703
                 await event.edit(str(e))
             else:
-                await event.edit("My profile picture was succesfully changed")
+                await event.edit("عکس پروفیل با موفقیت عوض شد")
     try:
         os.remove(photo)
     except Exception as e:  # pylint:disable=C0103,W0703
