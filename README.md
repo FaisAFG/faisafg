@@ -77,7 +77,7 @@ directory, with some utilities, enhancements, the `_core` plugin, and the `_inli
 ## design
 
 The modular design of the project enhances your Telegram experience
-through [plugins](https://github.com/SpEcHiDe/uniborg/tree/master/stdplugins)
+through [plugins](https://github.com/FaisAFG/faisafg/tree/master/stdplugins)
 which you can enable or disable on demand.
 
 Each plugin gets the `borg`, `logger`, `Config`, `tgbot` magical
