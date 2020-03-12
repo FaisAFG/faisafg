@@ -43,11 +43,11 @@ async def _(event):
         response = s.results.share()
         speedtest_image = response
         if as_text:
-            await event.edit("""**SpeedTest** completed in {} seconds
-Download: {}
-Upload: {}
-Ping: {}
-Internet Service Provider: {}
+            await event.edit("""**تست سرعت** کامل شد در {} ثانیه
+دانلود: {}
+آپلود: {}
+پینگ: {}
+Internet Service Provider: Amazon 
 ISP Rating: {}""".format(ms, convert_from_bytes(download_speed), convert_from_bytes(upload_speed), ping_time, i_s_p, i_s_p_rating))
         else:
             await borg.send_file(
@@ -60,10 +60,10 @@ ISP Rating: {}""".format(ms, convert_from_bytes(download_speed), convert_from_by
             )
             await event.delete()
     except Exception as exc:
-        await event.edit("""**SpeedTest** completed in {} seconds
-Download: {}
-Upload: {}
-Ping: {}
+        await event.edit("""**تست سرعت** کامل شد در {} ثانیه
+دانلود: {}
+آپلود: {}
+پینگ: {}
 
 __With the Following ERRORs__
 {}""".format(ms, convert_from_bytes(download_speed), convert_from_bytes(upload_speed), ping_time, str(exc)))
