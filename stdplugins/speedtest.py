@@ -47,7 +47,7 @@ async def _(event):
 دانلود: {}
 آپلود: {}
 پینگ: {}
-ارائه دهنده خدمات اینترنت : ALDI
+ارائه دهنده خدمات اینترنت : ALDI Germany
 ISP Rating: 3.7""".format(ms, convert_from_bytes(download_speed), convert_from_bytes(upload_speed), ping_time, i_s_p, i_s_p_rating))
         else:
             await borg.send_file(
