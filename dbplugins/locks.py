@@ -15,7 +15,7 @@ async def _(event):
         return
     input_str = event.pattern_match.group("target")
     peer_id = event.chat_id
-    if input_str in (("bots", "commands", "email", "forward", "url")):
+    if input_str in (("ربات", "دستور", "ایمیل", "اشتراک", "لینک")):
         try:
             from sql_helpers.locks_sql import update_lock
         except Exception as e:
@@ -24,7 +24,7 @@ async def _(event):
             return False
         update_lock(peer_id, input_str, True)
         await event.edit(
-            "Locked {}".format(input_str)
+            "قفل شد {}".format(input_str)
         )
     else:
         msg = None
@@ -38,25 +38,25 @@ async def _(event):
         cpin = None
         changeinfo = None
         if input_str:
-            if "msg" in input_str:
+            if "پیام" in input_str:
                 msg = True
-            if "media" in input_str:
+            if "فایل" in input_str:
                 media = True
-            if "sticker" in input_str:
+            if "استیکر" in input_str:
                 sticker = True
-            if "gif" in input_str:
+            if "گیف" in input_str:
                 gif = True
-            if "gamee" in input_str:
+            if "بازی" in input_str:
                 gamee = True
-            if "ainline" in input_str:
+            if "خطی" in input_str:
                 ainline = True
-            if "gpoll" in input_str:
+            if "نظرسنجی" in input_str:
                 gpoll = True
-            if "adduser" in input_str:
+            if "اضافه کاربر" in input_str:
                 adduser = True
-            if "cpin" in input_str:
+            if "پین" in input_str:
                 cpin = True
-            if "changeinfo" in input_str:
+            if "تغییر اطلاعات" in input_str:
                 changeinfo = True
         banned_rights = types.ChatBannedRights(
             until_date=None,
@@ -83,7 +83,7 @@ async def _(event):
             await event.edit(str(e))
         else:
             await event.edit(
-                "Current Chat Default Permissions Changed Successfully, in API"
+                "قفل با موفقیت فعال شد"
             )
 
 
@@ -99,14 +99,14 @@ async def _(event):
         return False
     input_str = event.pattern_match.group(1)
     peer_id = event.chat_id
-    if input_str in (("bots", "commands", "email", "forward", "url")):
+    if input_str in (("ربات", "دستور", "ایمیل", "اشتراک", "لینک")):
         update_lock(peer_id, input_str, False)
         await event.edit(
             "UnLocked {}".format(input_str)
         )
     else:
         await event.edit(
-            "Use `.lock` without any parameters to unlock API locks"
+            " `.lock` را بنویسید بدون هیچ دامنه ای"
         )
 
 
@@ -123,31 +123,31 @@ async def _(event):
     res = ""
     current_db_locks = get_locks(event.chat_id)
     if not current_db_locks:
-        res = "There are no DataBase locks in this chat"
+        res = "*قفل های گروه*"
     else:
-        res = "Following are the DataBase locks in this chat: \n"
-        res += "👉 `bots`: `{}`\n".format(current_db_locks.bots)
-        res += "👉 `commands`: `{}`\n".format(current_db_locks.commands)
-        res += "👉 `email`: `{}`\n".format(current_db_locks.email)
-        res += "👉 `forward`: `{}`\n".format(current_db_locks.forward)
-        res += "👉 `url`: `{}`\n".format(current_db_locks.url)
+        res = "موارد قفل شده 👇: \n"
+        res += "👉 `ربات`: `{}`\n".format(current_db_locks.bots)
+        res += "👉 `دستور`: `{}`\n".format(current_db_locks.commands)
+        res += "👉 `ایمیل`: `{}`\n".format(current_db_locks.email)
+        res += "👉 `اشتراک`: `{}`\n".format(current_db_locks.forward)
+        res += "👉 `لینک`: `{}`\n".format(current_db_locks.url)
     current_chat = await event.get_chat()
     try:
         current_api_locks = current_chat.default_banned_rights
     except AttributeError as e:
         logger.info(str(e))
     else:
-        res += "\nFollowing are the API locks in this chat: \n"
-        res += "👉 `msg`: `{}`\n".format(current_api_locks.send_messages)
-        res += "👉 `media`: `{}`\n".format(current_api_locks.send_media)
-        res += "👉 `sticker`: `{}`\n".format(current_api_locks.send_stickers)
-        res += "👉 `gif`: `{}`\n".format(current_api_locks.send_gifs)
-        res += "👉 `gamee`: `{}`\n".format(current_api_locks.send_games)
-        res += "👉 `ainline`: `{}`\n".format(current_api_locks.send_inline)
-        res += "👉 `gpoll`: `{}`\n".format(current_api_locks.send_polls)
-        res += "👉 `adduser`: `{}`\n".format(current_api_locks.invite_users)
-        res += "👉 `cpin`: `{}`\n".format(current_api_locks.pin_messages)
-        res += "👉 `changeinfo`: `{}`\n".format(current_api_locks.change_info)
+        res += "\nموارد قفل شده 👇: \n"
+        res += "👉 `پیام`: `{}`\n".format(current_api_locks.send_messages)
+        res += "👉 `فایل`: `{}`\n".format(current_api_locks.send_media)
+        res += "👉 `اشتیکر`: `{}`\n".format(current_api_locks.send_stickers)
+        res += "👉 `گیف`: `{}`\n".format(current_api_locks.send_gifs)
+        res += "👉 `بازی`: `{}`\n".format(current_api_locks.send_games)
+        res += "👉 `خطی`: `{}`\n".format(current_api_locks.send_inline)
+        res += "👉 `نظرسنجی`: `{}`\n".format(current_api_locks.send_polls)
+        res += "👉 `اضافه کاربر`: `{}`\n".format(current_api_locks.invite_users)
+        res += "👉 `پین`: `{}`\n".format(current_api_locks.pin_messages)
+        res += "👉 `تغییر اطلاعات`: `{}`\n".format(current_api_locks.change_info)
     await event.edit(res)
 
 
@@ -162,7 +162,7 @@ async def check_incoming_messages(event):
         return False
     # TODO: exempt admins from locks
     peer_id = event.chat_id
-    if is_locked(peer_id, "commands"):
+    if is_locked(peer_id, "دستور"):
         entities = event.message.entities
         is_command = False
         if entities:
@@ -174,19 +174,19 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                    "من به مقام آدمین دسترسی ندارم. \n`{}`".format(str(e))
                 )
-                update_lock(peer_id, "commands", False)
-    if is_locked(peer_id, "forward"):
+                update_lock(peer_id, "دستور", False)
+    if is_locked(peer_id, "اشتراک"):
         if event.fwd_from:
             try:
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                    "من به مقام آدمین دسترسی ندارم. \n`{}`".format(str(e))
                 )
-                update_lock(peer_id, "forward", False)
-    if is_locked(peer_id, "email"):
+                update_lock(peer_id, "اشترک", False)
+    if is_locked(peer_id, "ایمیل"):
         entities = event.message.entities
         is_email = False
         if entities:
@@ -198,10 +198,10 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                    "من به مقام آدمین دسترسی . \n`{}`".format(str(e))
                 )
-                update_lock(peer_id, "email", False)
-    if is_locked(peer_id, "url"):
+                update_lock(peer_id, "ایمیل", False)
+    if is_locked(peer_id, "لینک"):
         entities = event.message.entities
         is_url = False
         if entities:
@@ -213,7 +213,7 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                    "من به مقام آدمین دسترسی ندارم. \n`{}`".format(str(e))
                 )
                 update_lock(peer_id, "url", False)
 
@@ -228,7 +228,7 @@ async def _(event):
         return False
     # TODO: exempt admins from locks
     # check for "lock" "bots"
-    if is_locked(event.chat_id, "bots"):
+    if is_locked(event.chat_id, "ربات"):
         # bots are limited Telegram accounts,
         # and cannot join by themselves
         if event.user_added:
@@ -251,11 +251,11 @@ async def _(event):
                         ))
                     except Exception as e:
                         await event.reply(
-                            "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                            "من به مقام آدمین دسترسی ندارم. \n`{}`".format(str(e))
                         )
                         update_lock(event.chat_id, "bots", False)
                         break
             if Config.G_BAN_LOGGER_GROUP is not None and is_ban_able:
                 ban_reason_msg = await event.reply(
-                    "!warn [user](tg://user?id={}) Please Do Not Add BOTs to this chat.".format(users_added_by)
+                    "!warn [user](tg://user?id={}) لطفا در این گروه ربات اضافه نکنید.".format(users_added_by)
                 )
