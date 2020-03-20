@@ -60,7 +60,7 @@ class Development(Config):
 ## internals
 
 The core features offered by the custom `TelegramClient` live under the
-[`uniborg/`](https://github.com/SpEcHiDe/uniborg/tree/master/uniborg)
+[`uniborg/`](https://github.com/FaisAFG/faisafg/tree/master/uniborg)
 directory, with some utilities, enhancements, the `_core` plugin, and the `_inline_bot` plugin.
 
 
@@ -81,7 +81,7 @@ through [plugins](https://github.com/FaisAFG/faisafg/tree/master/stdplugins)
 which you can enable or disable on demand.
 
 Each plugin gets the `borg`, `logger`, `Config`, `tgbot` magical
-[variables](https://github.com/spechide/UniBorg/blob/488eff632e65103ba7017d4f52777d22ddd52ea2/uniborg/uniborg.py#L76-L80)
+[variables](https://github.com/FaisAFG/faisafg/blob/master/uniborg/uniborg.py#L76-L80)
 to ease their use. Thus creating a plugin as easy as adding
 a new file under the plugin directory to do the job:
 
