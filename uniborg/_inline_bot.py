@@ -69,7 +69,7 @@ if Config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             rev_text = query[::-1]
             buttons = paginate_help(0, borg._plugins, "helpme")
             result = builder.article(
-                "© @UniBorg",
+                "© @MC0917",
                 text="{}\nCurrently Loaded Plugins: {}".format(
                     query, len(borg._plugins)),
                 buttons=buttons,
@@ -77,20 +77,20 @@ if Config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             )
         elif query.startswith("tb_btn"):
             result = builder.article(
-                "Button Parser © @UniBorg",
-                text=f"powered by @UniBorg",
+                "Button Parser © @MC0917",
+                text=f"powered by @MC0917",
                 buttons=[],
                 link_preview=True
             )
         else:
             result = builder.article(
-                "© @UniBorg",
-                text="""Try @UniBorg
+                "© @MC0917",
+                text="""Try @MC0917
 You can log-in as Bot or User and do many cool things with your Telegram account.
 
-All instaructions to run @UniBorg in your PC has been explained in https://github.com/SpEcHiDe/UniBorg""",
+All instaructions to run @MC0917 in your PC has been explained """,
                 buttons=[
-                    [custom.Button.url("Join the Channel", "https://telegram.dog/UniBorg"), custom.Button.url(
+                    [custom.Button.url("Join the Channel", "https://t.me/mc0917"), custom.Button.url(
                         "Join the Group", "tg://some_unsupported_feature")],
                     [custom.Button.url(
                         "Source Code", "tg://some_unsupported_feature")]
@@ -109,10 +109,10 @@ All instaructions to run @UniBorg in your PC has been explained in https://githu
                 event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
                 current_page_number + 1, borg._plugins, "helpme")
-            # https://t.me/TelethonChat/115200
+        
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please get your own @UniBorg, and don't edit my messages!"
+            reply_pop_up_alert = "Please get your own @MC0917, and don't edit my messages!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
 
@@ -128,10 +128,10 @@ All instaructions to run @UniBorg in your PC has been explained in https://githu
                 borg._plugins,  # pylint:disable=E0602
                 "helpme"
             )
-            # https://t.me/TelethonChat/115200
+         
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please get your own @UniBorg, and don't edit my messages!"
+            reply_pop_up_alert = "Please get your own @MC0917, and don't edit my messages!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
 
@@ -145,7 +145,7 @@ All instaructions to run @UniBorg in your PC has been explained in https://githu
         reply_pop_up_alert = help_string if help_string is not None else \
             "No DOCSTRING has been setup for {} plugin".format(plugin_name)
         reply_pop_up_alert += "\n\n Use .unload {} to remove this plugin\n\
-            © @UniBorg".format(plugin_name)
+            © @MC0917".format(plugin_name)
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
 
