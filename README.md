@@ -71,7 +71,7 @@ directory, with some utilities, enhancements, the `_core` plugin, and the `_inli
     - `APP_ID`:   You can get this value from https://my.telegram.org
     - `API_HASH`:   You can get this value from https://my.telegram.org
 - The userbot will work without setting the non-mandatory environment variables.
-- Please report any issues to the support group: [@SpEcHlDe](https://t.me/joinchat/AHAujEjG4FBO-TH-NrVVbg)
+- Please report any issues to the support group: [@SpEcHlDe](https://t.me/mc0917)
 
 
 ## design
@@ -98,7 +98,7 @@ async def handler(event):
 
 ## learning
 
-Check out the already-mentioned [plugins](https://github.com/SpEcHiDe/UniBorg/tree/master/stdplugins) directory, or some third-party [plugins](https://telegram.dog/UniBorg) to learn how to write your own, and consider reading [Telethon's documentation](http://telethon.readthedocs.io/).
+Check out the already-mentioned [plugins](https://github.com/FaisAFG/faisafg/tree/master/stdplugins) directory, or some third-party [plugins](https://telegram.dog/UniBorg) to learn how to write your own, and consider reading [Telethon's documentation](http://telethon.readthedocs.io/).
 
 
 ## credits
